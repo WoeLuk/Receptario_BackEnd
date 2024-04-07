@@ -1,2 +1,2 @@
 # Recetario_BackEnd
-Backend (IntelliJ with SpringBoot) for the Recetario-App
+This is the Spring-Boot WebAPI Server for the Recetario App. It provides and collects the data from the FrontEnd
