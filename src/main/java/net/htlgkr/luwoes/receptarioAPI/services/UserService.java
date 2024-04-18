@@ -32,15 +32,15 @@ public class UserService {
     }
   }
 
-  public UserDTO addUser(UserDTO userDTO) throws ResponseStatusException {
-    User newUser = new User(userDTO.getUsername(), userDTO.getPassword());
-    User userNameTaken = userRepository.findUserByUsername(newUser.getUsername());
-
-    if (userNameTaken == null) {
-      userRepository.save(newUser);
-      return userDTO;
-    } else {
-      throw new ResponseStatusException(HttpStatus.CONFLICT);
-    }
-  }
+//  public UserDTO addUser(UserDTO userDTO) throws ResponseStatusException {
+//    User newUser = new User(userDTO.getUsername(), userDTO.getPassword());
+//    User userNameTaken = userRepository.findUserByUsername(newUser.getUsername());
+//
+//    if (userNameTaken == null) {
+//      userRepository.save(newUser);
+//      return userDTO;
+//    } else {
+//      throw new ResponseStatusException(HttpStatus.CONFLICT);
+//    }
+//  }
 }

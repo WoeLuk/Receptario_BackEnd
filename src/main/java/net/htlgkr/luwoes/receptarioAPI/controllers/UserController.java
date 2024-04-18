@@ -13,13 +13,13 @@ public class UserController {
   @Autowired
   UserService userService;
 
-  @GetMapping("/checkLogin")
+  @PostMapping("/checkLogin")
   public boolean checkLoginInformation(@RequestBody UserDTO userDTO) {
     return userService.checkUserLogin(userDTO);
   }
 
-  @PostMapping("/add")
-  public UserDTO addUser(@RequestBody UserDTO userDTO) {
-    return userService.addUser(userDTO);
-  }
+//  @PostMapping("/add")
+//  public UserDTO addUser(@RequestBody UserDTO userDTO) {
+//    return userService.addUser(userDTO);
+//  }
 }
