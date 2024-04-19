@@ -5,8 +5,9 @@ import net.htlgkr.luwoes.receptarioAPI.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/api/users")
 public class UserController {
 
   @Autowired
@@ -24,7 +25,7 @@ public class UserController {
     }
   }
 
-  @PostMapping("/add")
+  @GetMapping("/add")
   public String addUser(@RequestParam String username, @RequestParam String password) {
     System.out.println("Adding user...");
     if (userService.addUser(username, password)) {
