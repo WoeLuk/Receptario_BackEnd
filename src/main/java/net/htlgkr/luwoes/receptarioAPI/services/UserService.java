@@ -1,7 +1,7 @@
 package net.htlgkr.luwoes.receptarioAPI.services;
 
-import net.htlgkr.luwoes.receptarioAPI.dtos.User;
 import net.htlgkr.luwoes.receptarioAPI.dtos.UserDTO;
+import net.htlgkr.luwoes.receptarioAPI.models.ReceptarioUser;
 import net.htlgkr.luwoes.receptarioAPI.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,11 +14,11 @@ public class UserService {
   @Autowired
   UserRepository userRepository;
 
-  public boolean checkUserLogin(UserDTO userDTO) {
+  public boolean checkUserLogin(String username, String password) {
     boolean validInfo = false;
 
     int users = (int) userRepository.findAll().stream().filter(user -> {
-      if (user.getUsername().equalsIgnoreCase(userDTO.getUsername()) && user.getPassword().equalsIgnoreCase(userDTO.getPassword())) {
+      if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
         return true;
       } else {
         return false;
@@ -32,15 +32,15 @@ public class UserService {
     }
   }
 
-//  public UserDTO addUser(UserDTO userDTO) throws ResponseStatusException {
-//    User newUser = new User(userDTO.getUsername(), userDTO.getPassword());
-//    User userNameTaken = userRepository.findUserByUsername(newUser.getUsername());
-//
-//    if (userNameTaken == null) {
-//      userRepository.save(newUser);
-//      return userDTO;
-//    } else {
-//      throw new ResponseStatusException(HttpStatus.CONFLICT);
-//    }
-//  }
+  public boolean addUser(String username, String password) throws ResponseStatusException {
+    ReceptarioUser newUser = new ReceptarioUser(username, password);
+    ReceptarioUser userNameTaken = userRepository.findUserByUsername(newUser.getUsername());
+
+    if (userNameTaken == null) {
+      userRepository.save(newUser);
+      return true;
+    } else {
+      throw new ResponseStatusException(HttpStatus.CONFLICT);
+    }
+  }
 }

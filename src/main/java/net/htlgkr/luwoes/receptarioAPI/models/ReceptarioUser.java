@@ -1,4 +1,4 @@
-package net.htlgkr.luwoes.receptarioAPI.dtos;
+package net.htlgkr.luwoes.receptarioAPI.models;
 
 
 import jakarta.persistence.Entity;
@@ -13,7 +13,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class User {
+public class ReceptarioUser {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,4 +21,9 @@ public class User {
 
   private String username;
   private String password;
+
+  public ReceptarioUser(String username, String password) {
+    this.username = username;
+    this.password = password;
+  }
 }
