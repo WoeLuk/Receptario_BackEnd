@@ -1,0 +1,45 @@
+package net.htlgkr.luwoes.receptarioAPI.models;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import net.htlgkr.luwoes.receptarioAPI.dtos.RecipeDTO;
+import net.htlgkr.luwoes.receptarioAPI.enums.Category;
+import net.htlgkr.luwoes.receptarioAPI.enums.Difficulty;
+
+import java.util.List;
+
+@Entity
+@NoArgsConstructor
+@Getter
+@Setter
+public class Recipe {
+  @Id
+  @GeneratedValue
+  private int id;
+  private String name;
+  private Category category;
+  private Difficulty difficulty;
+  private String duration;
+
+  //Strings hier müssen noch geändert werden!
+  private String ingredients;
+  private String cookingSteps;
+
+  public Recipe(String name, Category category, Difficulty difficulty, String duration, String ingredients, String cookingSteps) {
+    this.name = name;
+    this.category = category;
+    this.difficulty = difficulty;
+    this.duration = duration;
+    this.ingredients = ingredients;
+    this.cookingSteps = cookingSteps;
+  }
+
+  public RecipeDTO toDTO() {
+    return new RecipeDTO(name, category, difficulty, duration, ingredients, cookingSteps);
+  }
+}
