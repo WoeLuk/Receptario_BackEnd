@@ -17,4 +17,10 @@ public class RecipeService {
   public List<RecipeDTO> getRecipes() {
     return recipeRepository.findAll().stream().map(Recipe::toDTO).toList();
   }
+
+  public boolean addRecipe(RecipeDTO recipeDTO) {
+    Recipe recipe = new Recipe(recipeDTO.getName(), recipeDTO.getCategory(), recipeDTO.getDifficulty(), recipeDTO.getDuration(), recipeDTO.getIngredients(), recipeDTO.getCookingSteps());
+    recipeRepository.save(recipe);
+    return true;
+  }
 }

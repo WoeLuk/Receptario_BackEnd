@@ -4,10 +4,7 @@ package net.htlgkr.luwoes.receptarioAPI.controllers;
 import net.htlgkr.luwoes.receptarioAPI.dtos.RecipeDTO;
 import net.htlgkr.luwoes.receptarioAPI.services.RecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,5 +19,14 @@ public class RecipeController {
   @GetMapping
   public List<RecipeDTO> getRecipes() {
     return recipeService.getRecipes();
+  }
+
+  @PostMapping("/add")
+  public String addRecipe(@RequestBody RecipeDTO recipeDTO) {
+    if (recipeService.addRecipe(recipeDTO)) {
+      return "true";
+    } else {
+      return "false";
+    }
   }
 }
