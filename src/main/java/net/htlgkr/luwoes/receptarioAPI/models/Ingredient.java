@@ -17,9 +17,6 @@ public class Ingredient {
   private long id;
   private String ingredientName;
 
-  @ManyToOne(cascade = CascadeType.ALL)
-  private Recipe recipe;
-
   public Ingredient(String ingredientName) {
 
     this.ingredientName = ingredientName;
