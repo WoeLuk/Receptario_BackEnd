@@ -20,17 +20,19 @@ import java.util.List;
 public class Recipe {
   @Id
   @GeneratedValue
-  private int id;
+  private long id;
   private String name;
   private Category category;
   private Difficulty difficulty;
   private String duration;
 
-  //Strings hier müssen noch geändert werden!
-  private String ingredients;
-  private String cookingSteps;
+  @OneToMany
+  private List<Ingredient> ingredients;
 
-  public Recipe(String name, Category category, Difficulty difficulty, String duration, String ingredients, String cookingSteps) {
+  @OneToMany
+  private List<CookingStep> cookingSteps;
+
+  public Recipe(String name, Category category, Difficulty difficulty, String duration, List<Ingredient> ingredients, List<CookingStep> cookingSteps) {
     this.name = name;
     this.category = category;
     this.difficulty = difficulty;
