@@ -23,6 +23,8 @@ public class RecipeController {
 
   @PostMapping("/add")
   public String addRecipe(@RequestBody RecipeDTO recipeDTO) {
+    System.out.println("Adding recipe...");
+    System.out.println(recipeDTO.toString());
     if (recipeService.addRecipe(recipeDTO)) {
       return "true";
     } else {
