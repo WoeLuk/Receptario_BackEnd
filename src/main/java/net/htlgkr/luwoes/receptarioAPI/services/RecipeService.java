@@ -45,6 +45,10 @@ public class RecipeService {
 
     Recipe recipe = new Recipe(recipeDTO.getName(), recipeDTO.getCategory(), recipeDTO.getDifficulty(), recipeDTO.getDuration(), ingredients, cookingSteps, recipeDTO.getUploaded_username());
     recipeRepository.save(recipe);
-    return true;3
+    return true;
+  }
+
+  public void deleteRecipe(int id) {
+    recipeRepository.deleteById(id);
   }
 }

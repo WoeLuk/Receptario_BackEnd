@@ -31,4 +31,9 @@ public class RecipeController {
       return "false";
     }
   }
+
+  @DeleteMapping("/delete/{id}")
+  public void deleteRecipe(@PathVariable int id) {
+    recipeService.deleteRecipe(id);
+  }
 }
