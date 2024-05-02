@@ -31,4 +31,9 @@ public class RecipeController {
       return "false";
     }
   }
+
+  @GetMapping("get/{username}")
+  public List<RecipeDTO> getRecipesWithUsername(@PathVariable String username) {
+    return recipeService.getRecipesWithUsername(username);
+  }
 }
