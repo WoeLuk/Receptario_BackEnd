@@ -32,7 +32,7 @@ public class RecipeController {
     }
   }
 
-  @GetMapping("get/{username}")
+  @GetMapping("{username}")
   public List<RecipeDTO> getRecipesWithUsername(@PathVariable String username) {
     return recipeService.getRecipesWithUsername(username);
   }
