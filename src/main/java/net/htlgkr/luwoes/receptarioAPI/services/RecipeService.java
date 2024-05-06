@@ -49,6 +49,7 @@ public class RecipeService {
   }
 
   public List<RecipeDTO> getRecipesWithUsername(String username) {
-    return recipeRepository.findAll().stream().filter(recipe -> recipe.getUploaded_username().equals(username)).map(Recipe::toDTO).toList();
+    List<RecipeDTO> recipeDTOS =  recipeRepository.findAll().stream().filter(recipe -> recipe.getUploaded_username().equals(username)).map(Recipe::toDTO).toList();
+    return recipeDTOS;
   }
 }
