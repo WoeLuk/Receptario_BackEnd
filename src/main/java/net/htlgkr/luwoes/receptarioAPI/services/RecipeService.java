@@ -53,4 +53,8 @@ public class RecipeService {
     System.out.println("asdf");
     return recipes;
   }
+
+  public void deleteRecipe(int id) {
+    recipeRepository.deleteById(id);
+  }
 }
