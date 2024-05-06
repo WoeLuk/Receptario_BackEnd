@@ -45,6 +45,12 @@ public class RecipeService {
 
     Recipe recipe = new Recipe(recipeDTO.getName(), recipeDTO.getCategory(), recipeDTO.getDifficulty(), recipeDTO.getDuration(), ingredients, cookingSteps, recipeDTO.getUploaded_username());
     recipeRepository.save(recipe);
-    return true;3
+    return true;
+  }
+
+  public List<RecipeDTO> getRecipesWithUsername(String username) {
+    List<RecipeDTO> recipes = recipeRepository.findAll().stream().filter(recipe -> recipe.getUploaded_username().equals(username)).map(Recipe::toDTO).toList();
+    System.out.println("asdf");
+    return recipes;
   }
 }
