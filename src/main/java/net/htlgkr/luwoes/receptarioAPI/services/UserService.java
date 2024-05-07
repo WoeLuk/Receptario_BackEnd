@@ -32,7 +32,7 @@ public class UserService {
     }
   }
 
-  public boolean addUser(String username, String password) throws ResponseStatusException {
+  public boolean addUser(String username, String password) {
     ReceptarioUser newUser = new ReceptarioUser(username, password);
     ReceptarioUser userNameTaken = userRepository.findUserByUsername(newUser.getUsername());
 
@@ -40,7 +40,7 @@ public class UserService {
       userRepository.save(newUser);
       return true;
     } else {
-      throw new ResponseStatusException(HttpStatus.CONFLICT);
+      return false;
     }
   }
 }

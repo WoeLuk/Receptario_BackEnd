@@ -49,12 +49,7 @@ public class RecipeService {
   }
 
   public List<RecipeDTO> getRecipesWithUsername(String username) {
-    List<RecipeDTO> recipes = recipeRepository.findAll().stream().filter(recipe -> recipe.getUploaded_username().equals(username)).map(Recipe::toDTO).toList();
-    System.out.println("asdf");
-    return recipes;
-  }
-
-  public void deleteRecipe(int id) {
-    recipeRepository.deleteById(id);
+    List<RecipeDTO> recipeDTOS =  recipeRepository.findAll().stream().filter(recipe -> recipe.getUploaded_username().equals(username)).map(Recipe::toDTO).toList();
+    return recipeDTOS;
   }
 }

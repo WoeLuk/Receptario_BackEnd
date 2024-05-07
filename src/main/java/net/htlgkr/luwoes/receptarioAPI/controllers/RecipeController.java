@@ -32,8 +32,8 @@ public class RecipeController {
     }
   }
 
-  @DeleteMapping("/delete/{id}")
-  public void deleteRecipe(@PathVariable int id) {
-    recipeService.deleteRecipe(id);
+  @GetMapping("{username}")
+  public List<RecipeDTO> getRecipesWithUsername(@PathVariable String username) {
+    return recipeService.getRecipesWithUsername(username);
   }
 }
