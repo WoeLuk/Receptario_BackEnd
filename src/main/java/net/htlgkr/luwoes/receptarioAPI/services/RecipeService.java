@@ -52,4 +52,15 @@ public class RecipeService {
     List<RecipeDTO> recipeDTOS =  recipeRepository.findAll().stream().filter(recipe -> recipe.getUploaded_username().equals(username)).map(Recipe::toDTO).toList();
     return recipeDTOS;
   }
+
+  public List<RecipeDTO> searchRecipes(String type, String term) {
+    if (type.equals("Name")) {
+      return recipeRepository.findAll().stream().filter(recipe -> recipe.getName().toLowerCase().contains(term.toLowerCase())).map(Recipe::toDTO).toList();
+    } else if (type.equals("Category")) {
+      return recipeRepository.findAll().stream().filter(recipe -> recipe.getCategory().toString().toLowerCase().contains(term.toLowerCase())).map(Recipe::toDTO).toList();
+    } else if (type.equals("Difficulty")) {
+      return recipeRepository.findAll().stream().filter(recipe -> recipe.getDifficulty().toString().toLowerCase().contains(term.toLowerCase())).map(Recipe::toDTO).toList();
+    }
+    return null;
+  }
 }

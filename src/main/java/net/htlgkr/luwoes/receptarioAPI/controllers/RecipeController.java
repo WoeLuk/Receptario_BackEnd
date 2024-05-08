@@ -36,4 +36,9 @@ public class RecipeController {
   public List<RecipeDTO> getRecipesWithUsername(@PathVariable String username) {
     return recipeService.getRecipesWithUsername(username);
   }
+
+  @GetMapping("/search")
+  public List<RecipeDTO> getRecipesWithSearchTypeAndTerm(@RequestParam String type, @RequestParam String term) {
+    return recipeService.searchRecipes(type, term);
+  }
 }
