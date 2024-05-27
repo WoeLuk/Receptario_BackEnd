@@ -20,7 +20,6 @@ public class GroceryController {
 
   @PostMapping("/add")
   public void addGroceryList(@RequestBody GroceryListDTO groceryListDTO) {
-    System.out.println("DINGS");
     List<IngredientDTO> _ingredients = groceryListDTO.getGroceryList();
     List<Ingredient> ingredients = new ArrayList<>();
     for (IngredientDTO ingDTO : _ingredients) {

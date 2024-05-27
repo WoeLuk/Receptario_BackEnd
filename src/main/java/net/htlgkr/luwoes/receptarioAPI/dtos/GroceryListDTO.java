@@ -20,4 +20,12 @@ public class GroceryListDTO {
   public String getUsername() {
     return username;
   }
+
+  @Override
+  public String toString() {
+    return "GroceryListDTO{" +
+            "groceryList=" + groceryList +
+            ", username='" + username + '\'' +
+            '}';
+  }
 }

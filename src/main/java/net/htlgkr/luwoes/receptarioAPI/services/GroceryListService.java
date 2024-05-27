@@ -1,7 +1,9 @@
 package net.htlgkr.luwoes.receptarioAPI.services;
 
 import net.htlgkr.luwoes.receptarioAPI.models.GroceryList;
+import net.htlgkr.luwoes.receptarioAPI.models.Ingredient;
 import net.htlgkr.luwoes.receptarioAPI.repositories.GroceryListRepository;
+import net.htlgkr.luwoes.receptarioAPI.repositories.IngredientsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,10 +13,14 @@ public class GroceryListService {
   @Autowired
   GroceryListRepository groceryListRepository;
 
+  @Autowired
+  IngredientsRepository ingredientsRepository;
+
   public void addList(GroceryList list) {
     if (groceryListRepository.findAll().stream().filter(grList -> list.getUsername().equals(grList.getUsername())).count() > 0) {
-      groceryListRepository.findAll().stream().filter(grList -> list.getUsername().equals(grList.getUsername())).forEach(grList -> grList.setGroceryList(list.getGroceryList()));
+      //groceryListRepository.findAll().stream().filter(grList -> list.getUsername().equals(grList.getUsername())).forEach(grList -> grList.setGroceryList(list.getGroceryList()));
     } else {
+      ingredientsRepository.saveAll(list.getGroceryList());
       groceryListRepository.save(list);
     }
   }

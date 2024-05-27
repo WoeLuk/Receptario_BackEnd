@@ -12,13 +12,14 @@ import java.util.List;
 @Getter
 @Setter
 public class Ingredient {
+
   @Id
-  @GeneratedValue
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
+
   private String ingredientName;
 
   public Ingredient(String ingredientName) {
-
     this.ingredientName = ingredientName;
   }
 }
