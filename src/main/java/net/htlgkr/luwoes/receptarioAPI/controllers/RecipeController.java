@@ -26,19 +26,23 @@ public class RecipeController {
     System.out.println("Adding recipe...");
     System.out.println(recipeDTO.toString());
     if (recipeService.addRecipe(recipeDTO)) {
+      System.out.println("Recipe added successfully");
       return recipeDTO;
     } else {
+      System.out.println("Recipe added failed");
       return null;
     }
   }
 
   @GetMapping("{username}")
   public List<RecipeDTO> getRecipesWithUsername(@PathVariable String username) {
+    System.out.println("Loading recipes with username");
     return recipeService.getRecipesWithUsername(username);
   }
 
   @GetMapping("/search")
   public List<RecipeDTO> getRecipesWithSearchTypeAndTerm(@RequestParam String type, @RequestParam String term) {
+    System.out.println("Searching recipe after " + type + " with term: " + term);
     return recipeService.searchRecipes(type, term);
   }
 }
